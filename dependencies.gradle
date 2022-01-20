@@ -1,0 +1,21 @@
+// Add your dependencies here
+
+dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.22") {
+        transitive = false
+    }
+
+    compile("com.falsepattern:falsepatternlib:1.7.10-0.3.1:dev") {
+        transitive = false
+    }
+
+    compile("com.falsepattern:triangulator:1.7.10-1.1.1:dev") {
+        transitive = false
+    }
+
+    compileOnly("com.falsepattern:json:0.1.2")
+    compileOnly("de.javagl:obj:0.3.0")
+    compileOnly("org.joml:joml:1.10.2")
+
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+}

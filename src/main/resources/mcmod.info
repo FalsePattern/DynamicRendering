@@ -1,0 +1,14 @@
+[
+{
+  "modid": "${modId}",
+  "name": "${modName}",
+  "description": "A library for rendering custom 3d models in minecraft with optional animations.",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
+  "url": "https://github.com/FalsePattern/DynamicRendering",
+  "authorList": ["FalsePattern"],
+  "parent": "",
+  "dependencies": ["falsepatternlib", "triangulator"],
+  "useDependencyInformation": true
+}
+]

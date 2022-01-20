@@ -1,0 +1,11 @@
+{
+  "transparent": false,
+  "texture": false,
+  "lighting": true,
+  "vertexMatrix": [
+    [0.5, 0, 0, 0],
+    [0, 0.5, 0, -0.5],
+    [0, 0, 0.5, 0]
+  ],
+  "normal": true
+}
