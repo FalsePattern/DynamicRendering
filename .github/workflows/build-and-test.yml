@@ -41,7 +41,6 @@ jobs:
       run: |
         mkdir run
         mkdir run/mods
-        cp lib/* run/mods/
         echo "eula=true" > run/eula.txt  
         timeout 90 ./gradlew runServer | tee --append server.log || true
 
