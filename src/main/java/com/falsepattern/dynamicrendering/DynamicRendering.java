@@ -24,7 +24,7 @@ public class DynamicRendering {
     @Mod.Instance(ModInfo.MODID)
     public static DynamicRendering instance;
 
-    @SidedProxy(clientSide = ModInfo.GROUPNAME + ".proxy.ClientProxy", serverSide = ModInfo.GROUPNAME + ".proxy.ServerProxy")
+    @SidedProxy(clientSide = ModInfo.GROUPNAME + "." + ModInfo.MODID + ".proxy.ClientProxy", serverSide = ModInfo.GROUPNAME + "." + ModInfo.MODID + ".proxy.ServerProxy")
     public static CommonProxy proxy;
 
     public DynamicRendering() {
