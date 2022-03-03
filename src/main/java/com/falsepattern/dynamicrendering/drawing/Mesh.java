@@ -44,6 +44,7 @@ public class Mesh implements AutoCloseable {
     public final boolean hasTexture;
     private final boolean lighting;
     private final boolean normal;
+    private final boolean cullBackFaces;
     private final Matrix3x2f uvMatrix;
     private final Matrix4x3f vertexMatrix;
 
@@ -59,24 +60,26 @@ public class Mesh implements AutoCloseable {
         hasTexture = metadata.getBool("texture");
         lighting = metadata.getBool("lighting");
         normal = metadata.getBool("normal");
+        cullBackFaces = metadata.getBool("cullBackFaces");
         vertexMatrix = Util.readMatrix(metadata.get("vertexMatrix"), 4, 3, Matrix4x3f::new, Matrix4x3f::set);
         uvMatrix = hasTexture ? Util.readMatrix(metadata.get("uvMatrix"), 3, 2, Matrix3x2f::new, Matrix3x2f::set) : null;
 
         obj = readObj(modID, modelName);
     }
 
-    private Mesh(Obj obj, boolean hasTexture, boolean lighting, boolean normal, Matrix4x3f vertexMatrix, Matrix3x2f uvMatrix) {
+    private Mesh(Obj obj, boolean hasTexture, boolean lighting, boolean normal, boolean cullBackFaces, Matrix4x3f vertexMatrix, Matrix3x2f uvMatrix) {
         this.obj = obj;
         this.transparent = true;
         this.hasTexture = hasTexture;
         this.lighting = lighting;
         this.normal = normal;
+        this.cullBackFaces = cullBackFaces;
         this.vertexMatrix = vertexMatrix;
         this.uvMatrix = uvMatrix;
     }
 
     public Mesh getInstance() {
-        if (!transparent) return this; else return new Mesh(obj, hasTexture, lighting, normal, vertexMatrix, uvMatrix);
+        if (!transparent) return this; else return new Mesh(obj, hasTexture, lighting, normal, cullBackFaces, vertexMatrix, uvMatrix);
     }
 
     public void draw(double x, double y, double z) {
@@ -94,7 +97,7 @@ public class Mesh implements AutoCloseable {
                 displayList = GLAllocation.generateDisplayLists(1);
             }
             GL11.glNewList(displayList, GL11.GL_COMPILE);
-            GL11.glPushAttrib(GL11.GL_ENABLE_BIT);
+            GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_POLYGON_BIT);
             if (hasTexture) {
                 GL11.glEnable(GL11.GL_TEXTURE_2D);
             } else {
@@ -110,6 +113,12 @@ public class Mesh implements AutoCloseable {
                 OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             } else {
                 GL11.glDisable(GL11.GL_BLEND);
+            }
+            if (cullBackFaces) {
+                GL11.glEnable(GL11.GL_CULL_FACE);
+                GL11.glCullFace(GL11.GL_BACK);
+            } else {
+                GL11.glDisable(GL11.GL_CULL_FACE);
             }
             Tessellator tess = Tessellator.instance;
             tess.startDrawing(GL11.GL_TRIANGLES);
