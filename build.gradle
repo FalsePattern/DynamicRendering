@@ -1,4 +1,4 @@
-//version: 1641429628falsepattern8
+//version: 1641429628falsepattern9
 /*
 DO NOT CHANGE THIS FILE!
 
@@ -28,7 +28,7 @@ buildscript {
         }
         maven {
             name = "jitpack"
-            url = "https://jitpack.io"
+            url = "https://jitpack.falsepattern.com/"
         }
     }
     dependencies {
@@ -216,10 +216,10 @@ repositories {
     if(usesMixins.toBoolean()) {
         maven {
             name = "sponge"
-            url = "https://repo.spongepowered.org/repository/maven-public"
+            url = "https://sponge.falsepattern.com/"
         }
         maven {
-            url = "https://jitpack.io"
+            url = "https://jitpack.falsepattern.com/"
         }
     }
 }
