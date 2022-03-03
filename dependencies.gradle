@@ -13,7 +13,7 @@ dependencies {
         transitive = false
     }
 
-    compileOnly("com.falsepattern:json:0.1.2")
+    compileOnly("com.falsepattern:json:0.4.1")
     compileOnly("de.javagl:obj:0.3.0")
     compileOnly("org.joml:joml:1.10.2")
 

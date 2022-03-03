@@ -55,10 +55,10 @@ public class Mesh implements AutoCloseable {
     private TesselatorVertexState vertexState = null;
     private Mesh(String modID, String modelName) {
         val metadata = JsonNode.parse(ResourceUtil.toString(new ResourceLocation(modID, Paths.get(modelName, "metadata.json").toString())));
-        transparent = metadata.get("transparent").boolValue();
-        hasTexture = metadata.get("texture").boolValue();
-        lighting = metadata.get("lighting").boolValue();
-        normal = metadata.get("normal").boolValue();
+        transparent = metadata.getBool("transparent");
+        hasTexture = metadata.getBool("texture");
+        lighting = metadata.getBool("lighting");
+        normal = metadata.getBool("normal");
         vertexMatrix = Util.readMatrix(metadata.get("vertexMatrix"), 4, 3, Matrix4x3f::new, Matrix4x3f::set);
         uvMatrix = hasTexture ? Util.readMatrix(metadata.get("uvMatrix"), 3, 2, Matrix3x2f::new, Matrix3x2f::set) : null;
 

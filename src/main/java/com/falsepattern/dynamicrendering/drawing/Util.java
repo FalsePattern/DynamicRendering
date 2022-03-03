@@ -17,7 +17,7 @@ public class Util {
         for (int y = 0; y < rows; y++) {
             val row = json.get(y);
             for (int x = 0; x < columns; x++) {
-                buf[x * rows + y] = row.get(x).floatValue();
+                buf[x * rows + y] = row.getFloat(x);
             }
         }
         matrixSetter.accept(matrix, buf);

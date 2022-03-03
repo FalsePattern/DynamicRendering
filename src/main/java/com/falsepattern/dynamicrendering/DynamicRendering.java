@@ -34,9 +34,9 @@ public class DynamicRendering {
                         .loadingModId(ModInfo.MODID)
                         .groupId("com.falsepattern")
                         .artifactId("json")
-                        .minVersion(new SemanticVersion(0, 1, 2))
-                        .maxVersion(new SemanticVersion(0, 1, Integer.MAX_VALUE))
-                        .preferredVersion(new SemanticVersion(0, 1, 2))
+                        .minVersion(new SemanticVersion(0, 4, 1))
+                        .maxVersion(new SemanticVersion(0, 4, Integer.MAX_VALUE))
+                        .preferredVersion(new SemanticVersion(0, 4, 1))
                         .build();
         DependencyLoader.builder()
                         .loadingModId(ModInfo.MODID)
