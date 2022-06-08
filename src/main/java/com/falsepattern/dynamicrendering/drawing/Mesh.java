@@ -33,7 +33,7 @@ public class Mesh implements AutoCloseable {
     @SneakyThrows
     private static Obj readObj(String modID, String modelDir) {
         val objInputStream = Minecraft.getMinecraft().getResourceManager()
-                                      .getResource(new ResourceLocation(modID, Paths.get(modelDir, "mesh.obj").toString()))
+                                      .getResource(new ResourceLocation(modID, modelDir + ".obj"))
                                       .getInputStream();
         return ObjUtils.triangulate(ObjReader.read(objInputStream));
     }
@@ -55,7 +55,7 @@ public class Mesh implements AutoCloseable {
     private double lastZ = 0;
     private TesselatorVertexState vertexState = null;
     private Mesh(String modID, String modelName) {
-        val metadata = JsonNode.parse(ResourceUtil.toString(new ResourceLocation(modID, Paths.get(modelName, "metadata.json").toString())));
+        val metadata = JsonNode.parse(ResourceUtil.toString(new ResourceLocation(modID, modelName + ".obj.mcmeta")));
         transparent = metadata.getBool("transparent");
         hasTexture = metadata.getBool("texture");
         lighting = metadata.getBool("lighting");
