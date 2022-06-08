@@ -1,15 +1,13 @@
 package com.falsepattern.dynamicrendering;
 
 import com.falsepattern.dynamicrendering.proxy.CommonProxy;
-import com.falsepattern.lib.api.DependencyLoader;
-import com.falsepattern.lib.api.SemanticVersion;
+import com.falsepattern.lib.dependencies.DependencyLoader;
+import com.falsepattern.lib.dependencies.SemanticVersion;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.concurrent.locks.ReentrantLock;
 
 @Mod(modid = ModInfo.MODID,
      version = ModInfo.VERSION,

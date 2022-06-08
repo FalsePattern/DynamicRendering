@@ -5,11 +5,11 @@ dependencies {
         transitive = false
     }
 
-    compile("com.falsepattern:falsepatternlib:1.7.10-0.3.1:dev") {
+    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.7.1:dev") {
         transitive = false
     }
 
-    compile("com.falsepattern:triangulator:1.7.10-1.1.1:dev") {
+    compile("com.falsepattern:triangulator-mc1.7.10:1.4.3:dev") {
         transitive = false
     }
 
